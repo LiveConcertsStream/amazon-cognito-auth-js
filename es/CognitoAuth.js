@@ -306,9 +306,9 @@ var CognitoAuth = function () {
    */
 
 
-  CognitoAuth.prototype.parseCognitoWebResponse = function parseCognitoWebResponse(httpRequestResponse) {
+  CognitoAuth.prototype.parseCognitoWebResponse = function parseCognitoWebResponse(httpRequestResponse, isHashBasedUrl) {
     var map = void 0;
-    if (httpRequestResponse.indexOf(this.getCognitoConstants().QUESTIONMARK) > -1) {
+    if (isHashBasedUrl || httpRequestResponse.indexOf(this.getCognitoConstants().QUESTIONMARK) > -1) {
       // for code type
       // this is to avoid a bug exists when sign in with Google or facebook
       // Sometimes the code will contain a poundsign in the end which breaks the parsing
